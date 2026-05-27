@@ -1,6 +1,6 @@
 # safe-guidance-demo
 
-**An LLM that drives a real UX flow but cannot hallucinate user-visible text.**
+**An LLM that drives a real UX flow but cannot hallucinate user-visible text or perform any harmful/unapproved actions at all.**
 
 The model is constrained to two outputs per turn:
 
