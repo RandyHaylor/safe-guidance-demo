@@ -1,4 +1,4 @@
-# safe-guidance-demo
+# AI Agent 'Safe Guidance' System Design
 
 **A user-facing ai agent approach that safely responds and drives real application commands but cannot hallucinate user-visible text or perform any harmful/unapproved actions.**
 
