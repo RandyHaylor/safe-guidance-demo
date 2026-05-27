@@ -1,0 +1,9 @@
+{
+  "user_id": "demo-user-001",
+  "display_name": "Demo User",
+  "current_screen": "home",
+  "preferences": {
+    "cabinet_color": "oak",
+    "wall_color": "beige"
+  }
+}

@@ -1,0 +1,246 @@
+{
+  "_comment": "Approved phrase library for a kitchen-renovation design assistant. Agent assembles responses by returning an ordered list of phrase IDs. Phrases are joined with single spaces; punctuation phrases (filler_period, filler_question, filler_comma, filler_exclaim) attach to the previous token without a leading space.",
+
+  "greetings": {
+    "greet_hello":             "Hello!",
+    "greet_hi_there":          "Hi there!",
+    "greet_welcome_back":      "Welcome back!",
+    "greet_good_to_see_you":   "Good to see you again.",
+    "greet_glad_youre_here":   "Glad you're here.",
+    "greet_lets_get_started":  "Let's get started."
+  },
+
+  "offers": {
+    "offer_help_design":           "I can help you design your dream kitchen.",
+    "offer_help_colors":           "I can help you pick colors for your kitchen.",
+    "offer_help_cabinets":         "I can help you choose a cabinet style and color.",
+    "offer_help_walls":            "I can help you pick a wall color that fits the space.",
+    "offer_help_layout":           "I can walk you through the kitchen layout.",
+    "offer_show_options":          "I can show you the available options.",
+    "offer_show_color_palette":    "I can show you a curated color palette.",
+    "offer_compare_finishes":      "I can compare a few finishes side by side.",
+    "offer_save_your_progress":    "I can save your selections as we go."
+  },
+
+  "questions": {
+    "ask_what_today":              "What would you like to work on today?",
+    "ask_which_room":              "Which part of the kitchen are we updating?",
+    "ask_which_element":           "Which element should we focus on first?",
+    "ask_confirm_change":          "Should I go ahead and apply that change?",
+    "ask_preferred_style":         "Do you have a style in mind?",
+    "ask_warm_or_cool":            "Are you leaning warm or cool tones?",
+    "ask_light_or_dark":           "Would you like to go lighter or darker?",
+    "ask_natural_light":           "How much natural light does the kitchen get?",
+    "ask_budget_range":            "Do you have a rough budget in mind?",
+    "ask_timeline":                "What's your timeline for the renovation?",
+    "ask_keep_or_replace":         "Are you planning to keep or replace it?",
+    "ask_show_examples":           "Would you like to see some examples?",
+    "ask_anything_else":           "Anything else you'd like to adjust?"
+  },
+
+  "confirmations": {
+    "confirm_will_update":         "Great! I'll update your",
+    "confirm_done_updating":       "Done. I've updated your",
+    "confirm_navigating_to":       "Sure, taking you to the",
+    "confirm_good_choice":         "Great choice!",
+    "confirm_classic_pick":        "That's a classic pick.",
+    "confirm_on_trend":            "That's very on-trend right now.",
+    "confirm_saved":               "I've saved that for you.",
+    "confirm_applied":             "Applied."
+  },
+
+  "acknowledgements": {
+    "ack_got_it":                  "Got it.",
+    "ack_no_problem":              "No problem.",
+    "ack_understood":              "Understood.",
+    "ack_makes_sense":             "That makes sense.",
+    "ack_one_moment":              "One moment.",
+    "ack_sorry_unsupported":       "Sorry, I can only update cabinet color and wall color, or move you between approved screens.",
+    "ack_color_unsupported":       "Sorry, that color isn't in the approved palette.",
+    "ack_screen_unsupported":      "Sorry, that screen isn't available.",
+    "ack_already_set":             "It looks like that's already your current selection."
+  },
+
+  "transitions": {
+    "trans_lets_take_a_look":      "Let's take a look.",
+    "trans_here_are_a_few":        "Here are a few options.",
+    "trans_to_get_started":        "To get started,",
+    "trans_in_that_case":          "In that case,",
+    "trans_for_example":           "For example,",
+    "trans_meanwhile":             "Meanwhile,",
+    "trans_after_that":            "After that,"
+  },
+
+  "nouns_kitchen_elements": {
+    "noun_kitchen":                "kitchen",
+    "noun_cabinet":                "cabinet",
+    "noun_cabinets":               "cabinets",
+    "noun_wall":                   "wall",
+    "noun_walls":                  "walls",
+    "noun_color":                  "color",
+    "noun_finish":                 "finish",
+    "noun_countertop":             "countertop",
+    "noun_countertops":            "countertops",
+    "noun_backsplash":             "backsplash",
+    "noun_flooring":               "flooring",
+    "noun_floor":                  "floor",
+    "noun_island":                 "island",
+    "noun_pantry":                 "pantry",
+    "noun_sink":                   "sink",
+    "noun_faucet":                 "faucet",
+    "noun_appliances":             "appliances",
+    "noun_refrigerator":           "refrigerator",
+    "noun_range":                  "range",
+    "noun_range_hood":             "range hood",
+    "noun_oven":                   "oven",
+    "noun_dishwasher":             "dishwasher",
+    "noun_microwave":              "microwave",
+    "noun_lighting":               "lighting",
+    "noun_pendant_lights":         "pendant lights",
+    "noun_under_cabinet_lighting": "under-cabinet lighting",
+    "noun_hardware":               "hardware",
+    "noun_pulls":                  "pulls",
+    "noun_knobs":                  "knobs",
+    "noun_layout":                 "layout",
+    "noun_space":                  "space",
+    "noun_room":                   "room",
+    "noun_design":                 "design",
+    "noun_style":                  "style",
+    "noun_palette":                "palette",
+    "noun_tone":                   "tone",
+    "noun_page":                   "page"
+  },
+
+  "materials": {
+    "material_granite":            "granite",
+    "material_quartz":             "quartz",
+    "material_quartzite":          "quartzite",
+    "material_marble":             "marble",
+    "material_butcher_block":      "butcher block",
+    "material_concrete":           "concrete",
+    "material_laminate":           "laminate",
+    "material_solid_surface":      "solid surface",
+    "material_stainless_steel":    "stainless steel",
+    "material_ceramic_tile":       "ceramic tile",
+    "material_porcelain_tile":     "porcelain tile",
+    "material_subway_tile":        "subway tile",
+    "material_mosaic_tile":        "mosaic tile",
+    "material_hardwood":           "hardwood",
+    "material_engineered_wood":    "engineered wood",
+    "material_vinyl_plank":        "vinyl plank",
+    "material_natural_stone":      "natural stone",
+    "material_brushed_nickel":     "brushed nickel",
+    "material_matte_black":        "matte black",
+    "material_polished_chrome":    "polished chrome",
+    "material_brass":              "brass"
+  },
+
+  "styles": {
+    "style_modern":                "modern",
+    "style_contemporary":          "contemporary",
+    "style_traditional":           "traditional",
+    "style_transitional":          "transitional",
+    "style_farmhouse":             "farmhouse",
+    "style_rustic":                "rustic",
+    "style_industrial":            "industrial",
+    "style_scandinavian":          "Scandinavian",
+    "style_minimalist":            "minimalist",
+    "style_coastal":               "coastal",
+    "style_mid_century":           "mid-century"
+  },
+
+  "adjectives": {
+    "adj_bright":                  "bright",
+    "adj_spacious":                "spacious",
+    "adj_cozy":                    "cozy",
+    "adj_sleek":                   "sleek",
+    "adj_warm":                    "warm",
+    "adj_cool":                    "cool",
+    "adj_elegant":                 "elegant",
+    "adj_clean":                   "clean",
+    "adj_timeless":                "timeless",
+    "adj_durable":                 "durable",
+    "adj_low_maintenance":         "low-maintenance",
+    "adj_inviting":                "inviting",
+    "adj_airy":                    "airy",
+    "adj_bold":                    "bold",
+    "adj_understated":             "understated",
+    "adj_neutral":                 "neutral",
+    "adj_dramatic":                "dramatic",
+    "adj_balanced":                "balanced"
+  },
+
+  "fragments": {
+    "frag_pairs_well_with":        "pairs well with",
+    "frag_works_great_with":       "works great with",
+    "frag_is_a_popular_choice":    "is a popular choice.",
+    "frag_brightens_the_space":    "brightens the space.",
+    "frag_adds_warmth":            "adds warmth.",
+    "frag_keeps_things_clean":     "keeps things feeling clean.",
+    "frag_makes_it_feel_larger":   "makes the room feel larger.",
+    "frag_gives_a_modern_feel":    "gives the kitchen a modern feel.",
+    "frag_gives_a_classic_feel":   "gives the kitchen a classic feel.",
+    "frag_complements_your":       "complements your",
+    "frag_alongside_your":         "alongside your",
+    "frag_matches_your":           "matches your",
+    "frag_against_your":           "against your",
+    "frag_with_your_current":      "with your current"
+  },
+
+  "confirmations_value": {
+    "confirm_to":                  "to"
+  },
+
+  "fillers": {
+    "filler_to":                   "to",
+    "filler_and":                  "and",
+    "filler_or":                   "or",
+    "filler_with":                 "with",
+    "filler_for":                  "for",
+    "filler_the":                  "the",
+    "filler_a":                    "a",
+    "filler_an":                   "an",
+    "filler_your":                 "your",
+    "filler_period":               ".",
+    "filler_question":             "?",
+    "filler_comma":                ",",
+    "filler_exclaim":              "!"
+  },
+
+  "screens": {
+    "screen_home":                 "home page",
+    "screen_design":               "design page",
+    "screen_preferences":          "preferences page",
+    "screen_help":                 "help page"
+  },
+
+  "colors": {
+    "color_white":                 "white",
+    "color_off_white":             "off-white",
+    "color_cream":                 "cream",
+    "color_ivory":                 "ivory",
+    "color_beige":                 "beige",
+    "color_grey":                  "grey",
+    "color_charcoal":              "charcoal",
+    "color_black":                 "black",
+    "color_navy":                  "navy",
+    "color_blue":                  "blue",
+    "color_sky_blue":              "sky blue",
+    "color_sage":                  "sage",
+    "color_mint":                  "mint",
+    "color_forest_green":          "forest green",
+    "color_green":                 "green",
+    "color_olive":                 "olive",
+    "color_terracotta":            "terracotta",
+    "color_red":                   "red",
+    "color_burgundy":              "burgundy",
+    "color_yellow":                "yellow",
+    "color_mustard":               "mustard",
+    "color_oak":                   "oak",
+    "color_maple":                 "maple",
+    "color_cherry":                "cherry",
+    "color_walnut":                "walnut",
+    "color_espresso":              "espresso",
+    "color_slate":                 "slate"
+  }
+}

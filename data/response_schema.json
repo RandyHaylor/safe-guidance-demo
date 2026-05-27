@@ -1,0 +1,22 @@
+{
+  "_comment": "Strict JSON shape the agent MUST return on every turn. The host app parses this and rejects anything else.",
+  "schema": {
+    "phrase_ids": ["<list of phrase IDs from phrases.json, in render order>"],
+    "command": {
+      "action": "<one of: navigate | update_preference | no_action>",
+      "args":   "<object matching approved_actions.json for that action, or {}>"
+    }
+  },
+  "example_greeting": {
+    "phrase_ids": ["greet_hello", "offer_help_design", "ask_what_today"],
+    "command": { "action": "no_action", "args": {} }
+  },
+  "example_update": {
+    "phrase_ids": ["confirm_will_update", "noun_cabinet", "noun_color", "filler_to", "color_green", "filler_period"],
+    "command": { "action": "update_preference", "args": { "key": "cabinet_color", "value": "green" } }
+  },
+  "example_navigate": {
+    "phrase_ids": ["confirm_navigating_to", "screen_design", "filler_period"],
+    "command": { "action": "navigate", "args": { "screen": "design" } }
+  }
+}

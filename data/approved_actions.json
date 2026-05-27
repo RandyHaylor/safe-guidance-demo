@@ -1,0 +1,32 @@
+{
+  "_comment": "Whitelist of commands the agent may emit. Anything outside this list is rejected by the host app. The 'value' list for update_preference must stay in sync with the 'colors' category in phrases.json.",
+
+  "navigate": {
+    "description": "Navigate the user to a known screen.",
+    "args": {
+      "screen": ["home", "design", "preferences", "help"]
+    }
+  },
+
+  "update_preference": {
+    "description": "Update a single user preference to an approved color value.",
+    "args": {
+      "key": ["cabinet_color", "wall_color"],
+      "value": [
+        "white", "off-white", "cream", "ivory", "beige",
+        "grey", "charcoal", "black",
+        "navy", "blue", "sky blue",
+        "sage", "mint", "forest green", "green", "olive",
+        "terracotta", "red", "burgundy",
+        "yellow", "mustard",
+        "oak", "maple", "cherry", "walnut", "espresso",
+        "slate"
+      ]
+    }
+  },
+
+  "no_action": {
+    "description": "No side effect. The response is just text.",
+    "args": {}
+  }
+}
