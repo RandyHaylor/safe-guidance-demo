@@ -27,49 +27,51 @@ The host app assembles the reply from approved phrases and executes the command 
 
 This is verbatim from a scripted run of `chat_app.py`. Each turn shows the model's chosen phrase IDs, the validated command, the state effect, and the assembled user-facing message.
 
-**Turn 1**
+Read it like this: the model picks IDs → the host looks each ID up in the phrase library → the bot's line is the concatenation of those lookups. The model **never** writes the bot's words.
+
+**Turn 2 — "change my cabinet color to green"**
 ```
-you:        hi what can I do
-phrase_ids: ack_sorry_unsupported, filler_period
-command:    no_action
-bot:        Sorry, I can only update cabinet color and wall color,
-            or move you between approved screens..
+model picks:    [confirm_will_update,  noun_cabinet,    noun_color, filler_to, color_green, filler_period]
+host looks up:  ["Great! I'll update your", "cabinet",  "color",    "to",      "green",     "."]
+                                              │
+                                              ▼
+bot says:       Great! I'll update your cabinet color to green.
+command:        update_preference(key=cabinet_color, value=green)   →   cabinet_color: oak → green
 ```
 
-**Turn 2**
+**Turn 3 — "now make the walls sage"**
 ```
-you:        change my cabinet color to green
-phrase_ids: confirm_will_update, noun_cabinet, noun_color, filler_to, color_green, filler_period
-command:    update_preference(key=cabinet_color, value=green)
-effect:     preferences.cabinet_color: oak -> green
-bot:        Great! I'll update your cabinet color to green.
-```
-
-**Turn 3**
-```
-you:        now make the walls sage
-phrase_ids: confirm_will_update, noun_wall, noun_color, filler_to, color_sage, filler_period
-command:    update_preference(key=wall_color, value=sage)
-effect:     preferences.wall_color: beige -> sage
-bot:        Great! I'll update your wall color to sage.
+model picks:    [confirm_will_update,  noun_wall,    noun_color, filler_to, color_sage, filler_period]
+host looks up:  ["Great! I'll update your", "wall",  "color",    "to",      "sage",     "."]
+bot says:       Great! I'll update your wall color to sage.
+command:        update_preference(key=wall_color, value=sage)   →   wall_color: beige → sage
 ```
 
-**Turn 4**
+**Turn 4 — "take me to the design page"**
 ```
-you:        take me to the design page
-phrase_ids: confirm_navigating_to, screen_design, filler_period
-command:    navigate(screen=design)
-effect:     current_screen: home -> design
-bot:        Sure, taking you to the design page.
+model picks:    [confirm_navigating_to,    screen_design,    filler_period]
+host looks up:  ["Sure, taking you to the", "design page",   "."]
+bot says:       Sure, taking you to the design page.
+command:        navigate(screen=design)   →   current_screen: home → design
 ```
 
-**Turn 5**
+**Turn 1 — "hi what can I do"** *(model picks a refusal because there is no greeting phrase)*
 ```
-you:        paint my walls neon pink
-phrase_ids: ack_color_unsupported, filler_period
-command:    no_action
-bot:        Sorry, that color isn't in the approved palette..
+model picks:    [ack_sorry_unsupported,                                                       filler_period]
+host looks up:  ["Sorry, I can only update cabinet color and wall color, or move you ...",   "."]
+bot says:       Sorry, I can only update cabinet color and wall color, or move you between approved screens..
+command:        no_action
 ```
+
+**Turn 5 — "paint my walls neon pink"** *(the headline)*
+```
+model picks:    [ack_color_unsupported,                       filler_period]
+host looks up:  ["Sorry, that color isn't in the approved palette",  "."]
+bot says:       Sorry, that color isn't in the approved palette..
+command:        no_action
+```
+
+A free LLM would happily paint the walls neon pink. This one can't — `neon pink` is not in `data/approved_actions.json` (so the host would reject the command), and there is no phrase in `data/phrases.json` that says "neon pink" (so the model couldn't even *type* it). Both layers refuse independently.
 
 **Turn 5 is the headline.** A free LLM would happily paint the walls neon pink. This one literally cannot — `neon pink` is not in `data/approved_actions.json`, and the model has no phrase for it either. Both layers refuse independently.
 
