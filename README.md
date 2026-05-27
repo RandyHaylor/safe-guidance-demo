@@ -27,68 +27,48 @@ The host app assembles the reply from approved phrases and executes the command 
 
 This is verbatim from a scripted run of `chat_app.py`. Each turn shows the model's chosen phrase IDs, the validated command, the state effect, and the assembled user-facing message.
 
+**Turn 1**
 ```
-╔══════════════════════════════════════════════════════════════╗
-║  TURN 1                                                      ║
-╚══════════════════════════════════════════════════════════════╝
-┌─ you ─────────────────────────────────────────────────────────
-│ hi what can I do
-┌─ agent JSON ──────────────────────────────────────────────────
-│ phrase_ids (2): ack_sorry_unsupported, filler_period
-│ command:    no_action
-┌─ bot ─────────────────────────────────────────────────────────
-│ Sorry, I can only update cabinet color and wall color, or
-│ move you between approved screens..
+you:        hi what can I do
+phrase_ids: ack_sorry_unsupported, filler_period
+command:    no_action
+bot:        Sorry, I can only update cabinet color and wall color,
+            or move you between approved screens..
+```
 
-╔══════════════════════════════════════════════════════════════╗
-║  TURN 2                                                      ║
-╚══════════════════════════════════════════════════════════════╝
-┌─ you ─────────────────────────────────────────────────────────
-│ change my cabinet color to green
-┌─ agent JSON ──────────────────────────────────────────────────
-│ phrase_ids (6): confirm_will_update, noun_cabinet, noun_color, filler_to, color_green, filler_period
-│ command:    update_preference(key=cabinet_color, value=green)
-┌─ status ──────────────────────────────────────────────────────
-│ ✓ preferences.cabinet_color: oak -> green
-┌─ bot ─────────────────────────────────────────────────────────
-│ Great! I'll update your cabinet color to green.
+**Turn 2**
+```
+you:        change my cabinet color to green
+phrase_ids: confirm_will_update, noun_cabinet, noun_color, filler_to, color_green, filler_period
+command:    update_preference(key=cabinet_color, value=green)
+effect:     preferences.cabinet_color: oak -> green
+bot:        Great! I'll update your cabinet color to green.
+```
 
-╔══════════════════════════════════════════════════════════════╗
-║  TURN 3                                                      ║
-╚══════════════════════════════════════════════════════════════╝
-┌─ you ─────────────────────────────────────────────────────────
-│ now make the walls sage
-┌─ agent JSON ──────────────────────────────────────────────────
-│ phrase_ids (6): confirm_will_update, noun_wall, noun_color, filler_to, color_sage, filler_period
-│ command:    update_preference(key=wall_color, value=sage)
-┌─ status ──────────────────────────────────────────────────────
-│ ✓ preferences.wall_color: beige -> sage
-┌─ bot ─────────────────────────────────────────────────────────
-│ Great! I'll update your wall color to sage.
+**Turn 3**
+```
+you:        now make the walls sage
+phrase_ids: confirm_will_update, noun_wall, noun_color, filler_to, color_sage, filler_period
+command:    update_preference(key=wall_color, value=sage)
+effect:     preferences.wall_color: beige -> sage
+bot:        Great! I'll update your wall color to sage.
+```
 
-╔══════════════════════════════════════════════════════════════╗
-║  TURN 4                                                      ║
-╚══════════════════════════════════════════════════════════════╝
-┌─ you ─────────────────────────────────────────────────────────
-│ take me to the design page
-┌─ agent JSON ──────────────────────────────────────────────────
-│ phrase_ids (3): confirm_navigating_to, screen_design, filler_period
-│ command:    navigate(screen=design)
-┌─ status ──────────────────────────────────────────────────────
-│ ✓ current_screen: home -> design
-┌─ bot ─────────────────────────────────────────────────────────
-│ Sure, taking you to the design page.
+**Turn 4**
+```
+you:        take me to the design page
+phrase_ids: confirm_navigating_to, screen_design, filler_period
+command:    navigate(screen=design)
+effect:     current_screen: home -> design
+bot:        Sure, taking you to the design page.
+```
 
-╔══════════════════════════════════════════════════════════════╗
-║  TURN 5                                                      ║
-╚══════════════════════════════════════════════════════════════╝
-┌─ you ─────────────────────────────────────────────────────────
-│ paint my walls neon pink
-┌─ agent JSON ──────────────────────────────────────────────────
-│ phrase_ids (2): ack_color_unsupported, filler_period
-│ command:    no_action
-┌─ bot ─────────────────────────────────────────────────────────
-│ Sorry, that color isn't in the approved palette..
+**Turn 5**
+```
+you:        paint my walls neon pink
+phrase_ids: ack_color_unsupported, filler_period
+command:    no_action
+bot:        Sorry, that color isn't in the approved palette..
 ```
 
 **Turn 5 is the headline.** A free LLM would happily paint the walls neon pink. This one literally cannot — `neon pink` is not in `data/approved_actions.json`, and the model has no phrase for it either. Both layers refuse independently.
