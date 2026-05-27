@@ -264,6 +264,14 @@ def call_claude(prompt_text: str,
         "--output-format", "json",
         "--system-prompt", system_prompt_path.read_text(),
         "--max-turns", "1",
+        # Hard-disable every built-in tool. The CLI's own --help says:
+        #   --tools <tools...>  Use "" to disable all tools, "default" to use all tools, ...
+        # We verified this empties the session's tools array (init event reports tools: []),
+        # so the model cannot Bash/Read/Edit/WebFetch/etc. — its only output channel
+        # is the JSON reply we then interpret as our own custom tool protocol.
+        "--tools", "",
+        # Belt-and-suspenders: also ignore any ambient MCP servers (which add tools too).
+        "--strict-mcp-config",
     ]
     if is_first_turn:
         cmd += ["--session-id", session_id]

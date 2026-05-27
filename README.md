@@ -15,7 +15,9 @@ The host app assembles the reply from approved phrases and executes the command 
 
 **A general-purpose LLM can run a UX flow without ever speaking in its own words.** Every word shown to the user came from a human-curated phrase file. Every state mutation went through a whitelist.
 
-**The same prompt safely carries non-text actions.** `navigate` and `update_preference` are validated against allowed argument values before the host touches state.
+**The model has zero built-in tools.** The host launches the Claude session with `--tools "" --strict-mcp-config`, so Bash, Read, Edit, WebFetch, MCP servers, etc. are all stripped out. The session's `tools` array is literally `[]`. The model's *only* output channel is the JSON reply.
+
+**That JSON reply IS the model's tool-call interface — and the tool calls are real.** From the LLM's point of view it is not roleplaying or describing actions: it emits `{"command": {"action": "update_preference", "args": {"key": "cabinet_color", "value": "green"}}}` and the host code actually mutates `user.json`, actually re-renders the user-visible text from approved phrases, actually navigates the UI. The schema-validated JSON object is functionally a custom tool-call protocol we built on top of the LLM — same shape as native tool use, but with a tiny, fully whitelisted surface (`navigate`, `update_preference`, `no_action`) and a fixed phrase library standing in for free-form `text` content.
 
 **Context-awareness without free text.** The agent receives `user_state` each turn, so it can choose phrases like "you're already on that screen" — but only by selecting a pre-written phrase, never by inventing one.
 
