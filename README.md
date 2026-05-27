@@ -2,12 +2,14 @@
 
 **An LLM that drives a real UX flow but cannot hallucinate user-visible text or perform any harmful/unapproved actions.**
 
-The model is constrained to two outputs per turn:
+Each reply has two parts — the user-visible text and the action to take — and **both are picked from a whitelist, not written by the model**:
 
-1. an ordered list of phrase IDs from a fixed approved library, and
-2. one structured command from a small whitelist (`navigate`, `update_preference`, `no_action`).
+- the user-visible text is an ordered list of phrase IDs drawn from a fixed approved phrase library, and
+- the action is one structured command (`navigate`, `update_preference`, `no_action`) whose argument values must also be on the whitelist.
 
-The host app assembles the reply from approved phrases and executes the command only if it matches the whitelist. Anything the model might *want* to say off-script is unreachable.
+The host app assembles the reply from approved phrases and executes the command only if it matches the whitelist. Anything the model might *want* to say or *want* to do off-script is unreachable.
+
+The number of phrases or actions per turn isn't the point — the point is that every word and every state change came from a human-curated set.
 
 ---
 
