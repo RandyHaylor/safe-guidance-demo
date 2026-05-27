@@ -1,6 +1,6 @@
 # safe-guidance-demo
 
-**A user-facing ai agent approach that drives a real UX flow but cannot hallucinate user-visible text or perform any harmful/unapproved actions.**
+**A user-facing ai agent approach that safely responds and drives real application commands but cannot hallucinate user-visible text or perform any harmful/unapproved actions.**
 
 Each reply has two parts — the user-visible text and the action to take — and **both are picked from a whitelist, not written by the model**:
 
